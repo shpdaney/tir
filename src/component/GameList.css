@@ -1,0 +1,28 @@
+.ball__list {
+	padding: 0.5rem 0;
+	background-color: #EAEBFF;
+	border-radius: 0 0 10px 10px;
+	border: 1px solid #CDCFFF;
+}
+
+.ball__item {
+	padding: 2px 2rem;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.ball__item-text {
+	font-size: 1.1rem;
+	letter-spacing: .1rem;
+}
+
+.ball__item-delete-button {
+	padding: 0 3px;
+	border-radius: 2px;
+}
+
+.ball__item-delete-button:hover {
+	outline: 1px solid var(--main-color)
+}

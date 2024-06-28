@@ -1,0 +1,45 @@
+.section__ball {
+	width: 100%;
+	height: 100%;
+}
+.ball__inner {
+	width: 100%;
+}
+
+.ball__header {
+	width: 100%;
+	padding: 1.5rem 2rem;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+	background-color: #6D73FF;
+	color: #fff;
+
+	font-size: 2rem;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.ball__add-button {
+	transition: transform 300ms ease-in-out;
+}
+.ball__add-button:hover{
+	transform: rotate(90deg);
+}
+
+.ball__sum {
+	padding: 1rem 2rem 0.8rem;
+	background-color: #CDCFFF;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.ball__sum-text {
+	font-size: 1.1rem;
+	font-weight: 600;
+}
