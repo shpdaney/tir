@@ -6,11 +6,11 @@ function App() {
 
   return (
     <>
-      <body className='body'>
+      <div className='body'>
         <main className='main'>
           <Ball/>
         </main>
-      </body>
+      </div>
     </>
   )
 }

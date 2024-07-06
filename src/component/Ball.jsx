@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Ball.css'
 import plusIcon from '../assets/plus-icon.svg'
 
@@ -7,10 +7,30 @@ import GameList from './GameList'
 import { generateId } from '../helper'
 import { getCurrentTime } from '../helper'
 
+const PRICE = 500
+
 
 function Ball() {
-	const [gamesList, setCount] = useState([])
-	const count = gamesList.length
+	// Локальный список игр
+	const localGames = JSON.parse(localStorage.getItem('localGames'))
+	const [games, setGame] = useState(localGames ? localGames : [])
+	const count = games.length
+
+	// Запись в локальный список игр
+	useEffect(() => {
+		localStorage.setItem('localGames', JSON.stringify(games))
+	}, [games])
+
+	const addGame = list => {
+		setGame([
+			...list,
+			{ id: generateId(), time: getCurrentTime() }
+		])
+	}
+	const deleteGame = id => {
+		setGame(games.filter(e => e.id !== id))
+	}
+
 
 	return (
 		<>
@@ -21,10 +41,7 @@ function Ball() {
 						<button
 							className="ball__add-button"
 							onClick={() => {
-								setCount([
-									...gamesList,
-									{ id: generateId(), time: getCurrentTime() }
-								])
+								addGame(games)
 							}}
 						>
 							<img src={plusIcon} alt="logo" />
@@ -32,14 +49,19 @@ function Ball() {
 					</header>
 					<div className="ball__sum">
 						<h3 className="ball__sum-text">
-							{`${count}шт - ${count * 500}р`}
+							{`${count}шт - ${count * PRICE}р`}
 						</h3>
 						<button
 							className='ball__button-open'
-							onClick={() => setCount([])}
-						>R</button>
+							onClick={() => {
+								setGame([])
+							}}
+						>Reset</button>
 					</div>
-					<GameList list={gamesList} />
+					<GameList
+						list={games}
+						delete={deleteGame}
+					/>
 				</div>
 			</section>
 		</>
