@@ -76,7 +76,8 @@ function Ball() {
 								<img src={copyIcon} alt="logo"
 									width={22} height={22} />
 							</button>
-							<button
+							{/* Reset Button */}
+							{/* <button
 								className='ball__button-reset'
 								onClick={() => {
 									setGame([])
@@ -84,7 +85,7 @@ function Ball() {
 							>
 								<img src={resetIcon} alt="logo"
 									width={22} height={22} />
-							</button>
+							</button> */}
 						</nav>
 					</div>
 					<GameList
