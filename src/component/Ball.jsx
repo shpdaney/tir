@@ -17,6 +17,7 @@ function Ball() {
 	const localGames = JSON.parse(localStorage.getItem('localGames'))
 	const [games, setGame] = useState(localGames ? localGames : [])
 	const count = games.length
+	const sumGames = `${count} шт - ${count * PRICE}р`
 
 	// Запись в локальный список игр
 	useEffect(() => {
@@ -31,6 +32,20 @@ function Ball() {
 	}
 	const deleteGame = id => {
 		setGame(games.filter(e => e.id !== id))
+	}
+
+	// Создание отчета
+	const gamesToText = (list) => {
+		let sum = [`Шарики ${sumGames}\n`]
+		list.forEach(element => {
+			sum.push(`${element.time}\n`)
+		});
+		return sum.join('')
+	}
+
+	// Копирование в буфер обмена
+	const copyClipboard = (text) => {
+		navigator.clipboard.writeText(text)
 	}
 
 
@@ -51,14 +66,12 @@ function Ball() {
 					</header>
 					<div className="ball__sum">
 						<h3 className="ball__sum-text">
-							{`${count} шт - ${count * PRICE}р`}
+							{sumGames}
 						</h3>
 						<nav className='ball__nav'>
 							<button
 								className='ball__button-copy'
-								onClick={() => {
-									setGame([])
-								}}
+								onClick={async () => await copyClipboard(gamesToText(games))}
 							>
 								<img src={copyIcon} alt="logo"
 									width={22} height={22} />
