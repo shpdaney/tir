@@ -65,7 +65,10 @@ function Ball() {
 						</button>
 					</header>
 					<div className="ball__sum">
-						<h3 className="ball__sum-text">
+						<h3
+							className="ball__sum-text"
+							onClick={() => copyClipboard(`${count * PRICE}`)}
+						>
 							{sumGames}
 						</h3>
 						<nav className='ball__nav'>
@@ -76,16 +79,6 @@ function Ball() {
 								<img src={copyIcon} alt="logo"
 									width={22} height={22} />
 							</button>
-							{/* Reset Button */}
-							{/* <button
-								className='ball__button-reset'
-								onClick={() => {
-									setGame([])
-								}}
-							>
-								<img src={resetIcon} alt="logo"
-									width={22} height={22} />
-							</button> */}
 						</nav>
 					</div>
 					<GameList
