@@ -14,3 +14,9 @@
   width: 100%;
   padding: 5rem 2rem;
 }
+
+@media (width <= 768px) {
+  .body {
+    width: 100vw;
+  }
+}

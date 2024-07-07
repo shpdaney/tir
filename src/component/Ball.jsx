@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import './Ball.css'
 import plusIcon from '../assets/plus-icon.svg'
+import copyIcon from '../assets/copy-icon.svg'
+import resetIcon from '../assets/reset-icon.svg'
 
 import GameList from './GameList'
 
@@ -49,14 +51,28 @@ function Ball() {
 					</header>
 					<div className="ball__sum">
 						<h3 className="ball__sum-text">
-							{`${count}шт - ${count * PRICE}р`}
+							{`${count} шт - ${count * PRICE}р`}
 						</h3>
-						<button
-							className='ball__button-open'
-							onClick={() => {
-								setGame([])
-							}}
-						>Reset</button>
+						<nav className='ball__nav'>
+							<button
+								className='ball__button-copy'
+								onClick={() => {
+									setGame([])
+								}}
+							>
+								<img src={copyIcon} alt="logo"
+									width={22} height={22} />
+							</button>
+							<button
+								className='ball__button-reset'
+								onClick={() => {
+									setGame([])
+								}}
+							>
+								<img src={resetIcon} alt="logo"
+									width={22} height={22} />
+							</button>
+						</nav>
 					</div>
 					<GameList
 						list={games}
