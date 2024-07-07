@@ -19,4 +19,7 @@
   .body {
     width: 100vw;
   }
+  .main {
+    padding: 2rem;
+  }
 }
